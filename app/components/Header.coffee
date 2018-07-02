@@ -12,7 +12,7 @@ class Header extends React.Component
 
     onLoginClick: (e) =>
         @login()
-        e.preventDefault?()
+        e.originalEvent?.preventDefault()
 
     login: ->
         if @state.connecting is true then return

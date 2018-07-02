@@ -20,16 +20,16 @@ class Premium extends React.Component
         poool "send", "page-view", "premium"
 
     componentDidMount: ->
-        poool "event", "onSubscribeClick", @onSubscribe
+        poool "event", "onSubscribeClick", @onSubscribeClick
 
         @sendHit()
 
     onLogin: ->
         @sendHit()
 
-    onSubscribe: (e) =>
+    onSubscribeClick: (e) =>
         @setState go_to_subscribe: true
-        e.preventDefault?()
+        e.originalEvent?.preventDefault?()
 
     render: ->
 
