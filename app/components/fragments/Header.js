@@ -12,7 +12,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    window.poool('event', 'onLoginClick', this.onLoginClick);
+    window.poool('event', 'onLoginClick', this.onLoginClick.bind(this));
   }
 
   onLoginClick(e) {
@@ -90,7 +90,7 @@ class Header extends React.Component {
   }
 
   componentWillUnmount() {
-    window.poool('unevent', 'onLoginClick', this.onLoginClick);
+    window.poool('unevent', 'onLoginClick', this.onLoginClick.bind(this));
   }
 }
 

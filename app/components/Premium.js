@@ -27,7 +27,7 @@ class Premium extends React.Component {
   }
 
   componentDidMount() {
-    window.poool('event', 'onSubscribeClick', this.onSubscribeClick);
+    window.poool('event', 'onSubscribeClick', this.onSubscribeClick.bind(this));
 
     this.sendHit();
   }
@@ -97,7 +97,7 @@ class Premium extends React.Component {
   }
 
   componentWillUnmount() {
-    window.poool('unevent', 'onSubscribeClick', this.onSubscribe);
+    window.poool('unevent', 'onSubscribeClick', this.onSubscribeClick.bind(this));
     window.poool('flush');
   }
 
