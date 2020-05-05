@@ -1,97 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-class Header extends React.Component {
+export default ({ onLogin = () => {} }) => {
+  const [connecting, setConnecting] = useState(false);
 
-  static defaultProps = {
-    onLogin: () => {},
-  }
+  useEffect(() => {
+    window.poool('event', 'onLoginClick', onLoginClick);
+    return () => window.poool('unevent', 'onLoginClick', onLoginClick);
+  }, []);
 
-  state = {
-    connecting: false,
-  }
-
-  componentDidMount() {
-    window.poool('event', 'onLoginClick', this.onLoginClick.bind(this));
-  }
-
-  onLoginClick(e) {
-    this.login();
+  const onLoginClick = e => {
     e.originalEvent?.preventDefault();
-  }
+    login();
+  };
 
-  login(e) {
+  const login = async e => {
     e?.preventDefault();
 
-    if (this.state.connecting === true) {
-      return false;
+    if (connecting) {
+      return;
     }
 
-    this.setState({ connecting: true });
+    setConnecting(true);
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    this._loginTimeout = setTimeout(() => {
-      window.test_user = {
-        logged: true,
-        premium: true,
-      };
+    window.testUser = { logged: true, premium: true };
+    setConnecting(false);
 
-      this.setState({ connecting: false });
+    onLogin();
+  };
 
-      this.props.onLogin();
-    }, 2000);
-
-    return false;
-  }
-
-  showLoginState() {
-    if (this.state.connecting) {
-      return (
-        <span>Connecting...</span>
-      );
-    } else if (window.test_user.logged) {
-      return (
-        <span>Signed as: <strong>Rick Sanchez</strong></span>
-      );
-    } else {
-      return (
-        <a href="#" onClick={this.login.bind(this)}>Sign in</a>
-      );
-    }
-  }
-
-  render() {
-    return (
-      <header className="mb-5">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to="/" className="navbar-brand">Newspaper</Link>
-          <div className="collapse navbar-collapse">
-            <div className="navbar-nav">
-              <Link to="/" className="nav-item nav-link">
-                Home
-              </Link>
-              <Link to="/premium" className="nav-item nav-link">
-                Premium post
-              </Link>
-              <Link to="/free" className="nav-item nav-link">
-                Free Post
-              </Link>
-              <Link to="/subscribe" className="nav-item nav-link">
-                Subscribe now!
-              </Link>
-            </div>
+  return (
+    <header className="mb-5">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link to="/" className="navbar-brand">Newspaper</Link>
+        <div className="collapse navbar-collapse">
+          <div className="navbar-nav">
+            <Link to="/" className="nav-item nav-link">
+              Home
+            </Link>
+            <Link to="/premium" className="nav-item nav-link">
+              Premium post
+            </Link>
+            <Link to="/free" className="nav-item nav-link">
+              Free Post
+            </Link>
+            <Link to="/subscribe" className="nav-item nav-link">
+              Subscribe now!
+            </Link>
           </div>
+        </div>
 
-          <span className="navbar-text">
-            { this.showLoginState() }
-          </span>
-        </nav>
-      </header>
-    );
-  }
-
-  componentWillUnmount() {
-    window.poool('unevent', 'onLoginClick', this.onLoginClick.bind(this));
-  }
-}
-
-export default Header;
+        <span className="navbar-text">
+          { connecting ? (
+            <span>Connecting...</span>
+          ) : window.testUser.logged ? (
+            <span>Signed as: <strong>Rick Sanchez</strong></span>
+          ) : (
+            <a href="#" onClick={login}>Sign in</a>
+          ) }
+        </span>
+      </nav>
+    </header>
+  );
+};

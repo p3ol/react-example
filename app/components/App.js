@@ -1,43 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
 
+import { defaultHistory } from '../utils';
 import Home from './Home';
 import Premium from './Premium';
 import Free from './Free';
 import Subscription from './Subscription';
 
-class App extends React.Component {
+// Avoid redux
+window.testUser = window.testUser || {
+  logged: false,
+  premium: false,
+};
 
-  constructor(props) {
-    super(props);
+export default () => {
+  useEffect(() => {
+    return defaultHistory.listen(() => window.scrollTo(0, 0));
+  }, []);
 
-    // Avoid redux
-    window.test_user = window.test_user || {
-      logged: false,
-      premium: false,
-    };
-
-    this.history = createBrowserHistory();
-    this.unlisten = this.history.listen(() => window.scrollTo(0, 0));
-  }
-
-  render() {
-    return (
-      <Router history={this.history}>
-        <Switch>
-          <Route path="/premium" component={Premium} />
-          <Route path="/free" component={Free} />
-          <Route path="/subscribe" component={Subscription} />
-          <Route component={Home} />
-        </Switch>
-      </Router>
-    );
-  }
-
-  componentWillUnmount() {
-    this.unlisten();
-  }
-}
-
-export default App;
+  return (
+    <Router history={defaultHistory}>
+      <Switch>
+        <Route path="/premium" component={Premium} />
+        <Route path="/free" component={Free} />
+        <Route path="/subscribe" component={Subscription} />
+        <Route component={Home} />
+      </Switch>
+    </Router>
+  );
+};
