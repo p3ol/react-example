@@ -36,13 +36,16 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.[hash].js',
+    filename: 'bundle.[fullhash].js',
+    publicPath: '/',
   },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist',
     port: 8888,
     host: 'localhost',
+    open: true,
+    hot: true,
     historyApiFallback: true,
   },
 };
