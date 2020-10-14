@@ -36,8 +36,8 @@
     "@poool/react-access": "1.0.0",
     "core-js": "3.6.5",
     "history": "5.0.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "react-router-dom": "5.2.0"
   },
   "scripts": {
