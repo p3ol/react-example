@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { usePoool } from '@poool/react-access';
 
 export default ({ onLogin = () => {} }) => {
   const [connecting, setConnecting] = useState(false);
+  const { poool } = usePoool();
 
   useEffect(() => {
-    window.poool('event', 'onLoginClick', onLoginClick);
-    return () => window.poool('unevent', 'onLoginClick', onLoginClick);
+    poool?.('event', 'onLoginClick', onLoginClick);
+    return () => poool?.('unevent', 'onLoginClick', onLoginClick);
   }, []);
 
   const onLoginClick = e => {

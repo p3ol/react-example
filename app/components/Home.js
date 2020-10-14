@@ -1,25 +1,31 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { usePoool } from '@poool/react-access';
 
 import Header from './fragments/Header';
 
 export default () => {
+  const { poool, appId, config } = usePoool();
+
   useEffect(() => {
-    sendHit();
+    init();
 
-    return () => window.poool('flush');
-  }, []);
+    return () => poool?.('flush');
+  }, [poool]);
 
-  const sendHit = () => {
-    window.poool('config', {
+  const init = async () => {
+    poool?.('init', appId);
+    poool?.('config', {
+      ...config,
       user_is_premium: window.testUser?.premium || false,
     });
 
-    window.poool('send', 'page-view', 'page');
+    await poool?.('send', 'page-view', 'page');
   };
 
-  const onLogin = () => {
-    sendHit();
+  const onLogin = async () => {
+    await poool?.('flush');
+    init();
   };
 
   return (
