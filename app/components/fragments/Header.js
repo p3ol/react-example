@@ -8,6 +8,7 @@ export default ({ onLogin = () => {} }) => {
 
   useEffect(() => {
     poool?.('event', 'onLoginClick', onLoginClick);
+
     return () => poool?.('unevent', 'onLoginClick', onLoginClick);
   }, []);
 
