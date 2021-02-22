@@ -978,10 +978,10 @@
     "@babel/plugin-transform-react-jsx-development" "^7.12.12"
     "@babel/plugin-transform-react-pure-annotations" "^7.12.1"
 
-"@babel/runtime-corejs3@7.12.17":
-  version "7.12.17"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.17.tgz#651a010f3ec8f1f7bf53fb4923846bf10334adb3"
-  integrity sha512-iZc+ydnrY8pDNObz2Pwi6FF8D5Q+QGC48P7BaYHgoUSrtYxPr+jWbHUp48FgJumh0uzPcCaLFILjJgpFtrrrbA==
+"@babel/runtime-corejs3@7.12.18":
+  version "7.12.18"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.12.18.tgz#e5663237e5658e4c09586995d2dd6d2c8cfd6fc0"
+  integrity sha512-ngR7yhNTjDxxe1VYmhqQqqXZWujGb6g0IoA4qeG6MxNGRnIw2Zo8ImY8HfaQ7l3T6GklWhdNfyhWk0C0iocdVA==
   dependencies:
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
