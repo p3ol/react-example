@@ -9,8 +9,8 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "7.13.8",
-    "@babel/plugin-transform-runtime": "7.13.8",
-    "@babel/preset-env": "7.13.8",
+    "@babel/plugin-transform-runtime": "7.13.9",
+    "@babel/preset-env": "7.13.9",
     "@babel/preset-react": "7.12.13",
     "@poool/eslint-config": "1.4.2",
     "@poool/eslint-config-react": "1.4.2",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@babel/eslint-parser": "7.13.8",
     "@babel/eslint-plugin": "7.13.0",
-    "@babel/runtime-corejs3": "7.13.8",
+    "@babel/runtime-corejs3": "7.13.9",
     "@poool/react-access": "1.1.0",
     "core-js": "3.9.1",
     "history": "5.0.0",
