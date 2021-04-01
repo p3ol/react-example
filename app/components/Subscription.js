@@ -18,6 +18,7 @@ export default () => {
       user_is_premium: window.testUser?.premium || false,
     });
 
+    poool?.('send', 'conversion');
     poool?.('send', 'page-view', 'subscription');
   };
 
