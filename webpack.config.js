@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './app/index.js',
   mode: 'development',
+  devtool: 'inline-source-map',
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),

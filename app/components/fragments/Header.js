@@ -1,37 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { usePoool } from '@poool/react-access';
+
+import { useAuth } from '../../hooks';
 
 export default ({ onLogin = () => {} }) => {
-  const [connecting, setConnecting] = useState(false);
-  const { poool } = usePoool();
-
-  useEffect(() => {
-    poool?.('event', 'onLoginClick', onLoginClick);
-
-    return () => poool?.('unevent', 'onLoginClick', onLoginClick);
-  }, []);
-
-  const onLoginClick = e => {
-    e.originalEvent?.preventDefault();
-    login();
-  };
-
-  const login = async e => {
-    e?.preventDefault();
-
-    if (connecting) {
-      return;
-    }
-
-    setConnecting(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    window.testUser = { logged: true, premium: true };
-    setConnecting(false);
-
-    onLogin();
-  };
+  const { login, connecting } = useAuth();
 
   return (
     <header className="mb-5">

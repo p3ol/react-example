@@ -1,25 +1,20 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { usePoool } from '@poool/react-access';
+import { useAudit } from '@poool/react-access';
 
 import Header from './fragments/Header';
 
 export default () => {
-  const { poool, appId, config } = usePoool();
+  const { lib: audit } = useAudit();
 
   useEffect(() => {
     init();
   }, []);
 
   const init = () => {
-    poool?.('init', appId);
-    poool?.('config', {
-      ...config,
-      user_is_premium: window.testUser?.premium || false,
-    });
 
-    poool?.('send', 'conversion');
-    poool?.('send', 'page-view', 'subscription');
+    audit?.sendEvent('page-view', 'subscription');
+    audit?.sendEvent('conversion');
   };
 
   const onLogin = () => {

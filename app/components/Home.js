@@ -1,30 +1,21 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { usePoool } from '@poool/react-access';
+import { useAudit } from '@poool/react-access';
 
 import Header from './fragments/Header';
 
 export default () => {
-  const { poool, appId, config } = usePoool();
-
+  const { lib: audit } = useAudit();
   useEffect(() => {
     init();
 
-    return () => poool?.('flush');
-  }, [poool]);
+  }, [audit]);
 
   const init = async () => {
-    poool?.('init', appId);
-    poool?.('config', {
-      ...config,
-      user_is_premium: window.testUser?.premium || false,
-    });
-
-    await poool?.('send', 'page-view', 'page');
+    await audit?.sendEvent('page-view', 'page');
   };
 
   const onLogin = async () => {
-    await poool?.('flush');
     init();
   };
 
