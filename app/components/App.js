@@ -9,12 +9,6 @@ import Free from './Free';
 import Subscription from './Subscription';
 import Auth from './Auth';
 
-// Avoid redux
-window.testUser = window.testUser || {
-  logged: false,
-  premium: false,
-};
-
 export default () => {
   useEffect(() => {
     return defaultHistory.listen(() => window.scrollTo(0, 0));

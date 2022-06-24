@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useAudit } from '@poool/react-access';
 
 import Header from './fragments/Header';
+import { useAuth } from '../hooks';
 
 export default () => {
   const { lib: audit, config } = useAudit();
-
+  const { premium } = useAuth();
   useEffect(() => {
     init();
 
@@ -14,7 +15,7 @@ export default () => {
   const init = async () => {
     audit?.config({
       ...config,
-      user_is_premium: window.testUser?.premium || false,
+      user_is_premium: premium || false,
     });
     await audit?.sendEvent('page-view', 'free');
   };

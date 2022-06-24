@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks';
 
 export default ({ onLogin = () => {} }) => {
-  const { login, connecting } = useAuth();
+  const { login, connecting, connected } = useAuth();
+
+  const login_ = () => {
+    login();
+    onLogin();
+  };
 
   return (
     <header className="mb-5">
@@ -30,10 +35,10 @@ export default ({ onLogin = () => {} }) => {
         <span className="navbar-text">
           { connecting ? (
             <span>Connecting...</span>
-          ) : window.testUser.logged ? (
+          ) : connected ? (
             <span>Signed as: <strong>Rick Sanchez</strong></span>
           ) : (
-            <a href="#" onClick={login}>Sign in</a>
+            <a href="#" onClick={login_}>Sign in</a>
           ) }
         </span>
       </nav>

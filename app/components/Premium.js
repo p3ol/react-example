@@ -16,9 +16,9 @@ export default () => {
   const accessRef = useRef();
   const paywallRef = useRef();
 
-  const { lib: audit } = useAudit();
+  const { lib: audit, config: auditConfig } = useAudit();
   const { config: baseConfig } = useAccess();
-  const { login } = useAuth();
+  const { login, premium, connected } = useAuth();
   const [config, setConfig] = useState({});
 
   useEffect(() => {
@@ -29,10 +29,10 @@ export default () => {
     setConfig({
       ...baseConfig,
       ...config,
-      user_is_premium: window.testUser?.premium || false,
+      user_is_premium: premium || false,
     });
 
-    if (window.testUser?.logged && window.testUser?.premium) {
+    if (connected && premium) {
       setConfig({
         ...baseConfig,
         ...config,
@@ -44,6 +44,10 @@ export default () => {
 
   const onLogin = async () => {
     init();
+    audit?.config({
+      ...auditConfig,
+      user_is_premium: premium || false,
+    });
     audit?.sendEvent('page-view', 'premium');
   };
 
@@ -104,21 +108,20 @@ export default () => {
         <h1>Premium post</h1>
         <p>This is a premium post (with a paywall), it
         contains exactly 10 paragraphs of lorem ipsum</p>
-        { !window.testUser.premium && (
-          <RestrictedContent ref={paywallRef}>
-            {articleBody}
-          </RestrictedContent>
-        )}
-        { window.testUser.premium && articleBody }
-        { !window.testUser.premium && (
-          <Paywall
-            ref={accessRef}
-            contentRef={paywallRef}
-            beforeInit={init}
-            events={{ onSubscribeClick, onLoginClick }}
-            config={config}
-          />
-        )}
+        { !premium ? (
+          <>
+            <RestrictedContent ref={paywallRef}>
+              {articleBody}
+            </RestrictedContent>
+            <Paywall
+              ref={accessRef}
+              contentRef={paywallRef}
+              beforeInit={init}
+              events={{ onSubscribeClick, onLoginClick }}
+              config={config}
+            />
+          </>
+        ) : articleBody }
       </div>
       <Pixel type="page-view" data={{ type: 'premium' }} />
     </div>

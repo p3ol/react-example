@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 import { useAudit } from '@poool/react-access';
 
 import Header from './fragments/Header';
+import { useAuth } from '../hooks';
 
 export default () => {
-  const { lib: audit } = useAudit();
+  const { lib: audit, config } = useAudit();
+  const { premium } = useAuth();
   useEffect(() => {
     init();
 
   }, [audit]);
 
   const init = async () => {
+    audit?.config({
+      ...config,
+      user_is_premium: premium || false,
+    });
     await audit?.sendEvent('page-view', 'page');
   };
 
