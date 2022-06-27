@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAudit } from '@poool/react-access';
 
-import Header from './fragments/Header';
 import { useAuth } from '../hooks';
+import Header from './fragments/Header';
 
 export default () => {
   const { lib: audit, config } = useAudit();
   const { premium } = useAuth();
+
   useEffect(() => {
     init();
-
   }, [audit]);
 
   const init = async () => {

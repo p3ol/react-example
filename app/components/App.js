@@ -32,7 +32,6 @@ export default () => {
             <Route path="/subscribe" element={<Subscription />} />
             <Route index element={<Home />} />
           </Routes>
-
         </AccessContext>
       </Auth>
     </BrowserRouter>

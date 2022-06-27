@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useAudit } from '@poool/react-access';
 
-import Header from './fragments/Header';
 import { useAuth } from '../hooks';
+import Header from './fragments/Header';
 
 export default () => {
   const { lib: audit, config } = useAudit();

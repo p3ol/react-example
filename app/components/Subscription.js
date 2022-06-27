@@ -12,7 +12,6 @@ export default () => {
   }, []);
 
   const init = () => {
-
     audit?.sendEvent('page-view', 'subscription');
     audit?.sendEvent('conversion');
   };

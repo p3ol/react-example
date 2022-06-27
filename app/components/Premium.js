@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
+  useAudit,
+  useAccess,
   Paywall,
   RestrictedContent,
-  useAudit,
   Pixel,
-  useAccess,
 } from '@poool/react-access';
 
-import { defaultHistory } from '../utils';
-import Header from './fragments/Header';
 import { useAuth } from '../hooks';
+import Header from './fragments/Header';
 
 export default () => {
   const accessRef = useRef();
   const paywallRef = useRef();
+  const navigate = useNavigate();
 
   const { lib: audit, config: auditConfig } = useAudit();
   const { config: baseConfig } = useAccess();
@@ -33,12 +33,7 @@ export default () => {
     });
 
     if (connected && premium) {
-      setConfig({
-        ...baseConfig,
-        ...config,
-        force_widget: 'invisible',
-        signature_enabled: false,
-      });
+      accessRef.current?.destroy();
     }
   };
 
@@ -53,12 +48,12 @@ export default () => {
 
   const onSubscribeClick = e => {
     e.originalEvent?.preventDefault();
-    defaultHistory.push('/subscribe');
+    navigate('/subscribe');
   };
 
-  const onLoginClick = e => {
+  const onLoginClick = async e => {
     e.originalEvent?.preventDefault();
-    login();
+    await login();
     onLogin();
   };
 
@@ -107,7 +102,8 @@ export default () => {
         <Header paywallRef={accessRef} onLogin={onLogin} />
         <h1>Premium post</h1>
         <p>This is a premium post (with a paywall), it
-        contains exactly 10 paragraphs of lorem ipsum</p>
+        contains exactly 10 paragraphs of lorem ipsum
+        </p>
         { !premium ? (
           <>
             <RestrictedContent ref={paywallRef}>
