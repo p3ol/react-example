@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAudit } from '@poool/react-access';
 
 import { useAuth } from '../hooks';
