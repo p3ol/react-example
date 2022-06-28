@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useAudit } from '@poool/react-access';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
 import Header from './fragments/Header';
