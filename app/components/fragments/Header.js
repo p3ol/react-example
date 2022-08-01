@@ -1,35 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { usePoool } from '@poool/react-access';
+
+import { useAuth } from '../../hooks';
 
 export default ({ onLogin = () => {} }) => {
-  const [connecting, setConnecting] = useState(false);
-  const { poool } = usePoool();
+  const { login, connecting, connected } = useAuth();
 
-  useEffect(() => {
-    poool?.('event', 'onLoginClick', onLoginClick);
-
-    return () => poool?.('unevent', 'onLoginClick', onLoginClick);
-  }, []);
-
-  const onLoginClick = e => {
-    e.originalEvent?.preventDefault();
+  const login_ = () => {
     login();
-  };
-
-  const login = async e => {
-    e?.preventDefault();
-
-    if (connecting) {
-      return;
-    }
-
-    setConnecting(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    window.testUser = { logged: true, premium: true };
-    setConnecting(false);
-
     onLogin();
   };
 
@@ -57,10 +35,10 @@ export default ({ onLogin = () => {} }) => {
         <span className="navbar-text">
           { connecting ? (
             <span>Connecting...</span>
-          ) : window.testUser.logged ? (
+          ) : connected ? (
             <span>Signed as: <strong>Rick Sanchez</strong></span>
           ) : (
-            <a href="#" onClick={login}>Sign in</a>
+            <a href="#" onClick={login_}>Sign in</a>
           ) }
         </span>
       </nav>
