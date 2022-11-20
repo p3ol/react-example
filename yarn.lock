@@ -1290,20 +1290,20 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@poool/eslint-config-react@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@poool/eslint-config-react/-/eslint-config-react-2.0.0.tgz#8609b20425db9933132f0d890427a83f8e3828cf"
-  integrity sha512-v7xjVlYz1/oBptMCJcWJ8fnXoDFshOehhcawaU6HROJONep1l7oaG9H3RWLIf5btprk3ehX6ZaYb3mDtyQApvg==
+"@poool/eslint-config-react@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@poool/eslint-config-react/-/eslint-config-react-2.0.2.tgz#fa75899d1aeb40700d24767ab28459194a9d0ecb"
+  integrity sha512-WwtKYlbE+QQia/R+S1eTxbEAxznHjcB+WMs4iNp0PpA3BpDazE9kfp1ftN2b2cNA4RFzkSL8NUS+859mZjG5wQ==
 
-"@poool/eslint-config@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@poool/eslint-config/-/eslint-config-2.0.0.tgz#eafe61dd86c2d11010066b35167d66b1c83e4b6b"
-  integrity sha512-DY7gyCXQhVI7D1KXv3BH1t0E+ubZYxzALVkQ/kRzMq0shqimc87TgTs6NUBvLP3RfqPKdl8YLNe51KFUUvRCxQ==
+"@poool/eslint-config@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@poool/eslint-config/-/eslint-config-2.0.2.tgz#e32c3978670f8b938c5df4d3d2fd0144f4c18ce0"
+  integrity sha512-yQblGr/0iZkoSRzz4A3jly5MF4i9c1JEmqg+zqBXJCEmNmiod6GjelZObibYK7QTE64eIknNE32NHXuF6L7ceA==
 
-"@poool/eslint-plugin@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@poool/eslint-plugin/-/eslint-plugin-2.0.0.tgz#ed837340c64121c94ad20dfb5d897e2b863be862"
-  integrity sha512-qhR0vOh+6tiPbI7re3gG8bvR590Ut1ekOee9lksCL8LBq8601Ym+fniwyvR5osNSeVJ5BDwL0IHnZGYJtHdjCQ==
+"@poool/eslint-plugin@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@poool/eslint-plugin/-/eslint-plugin-2.0.2.tgz#5f9e415abf0830075b2b8c73cf02fb8b2696ecf1"
+  integrity sha512-8SJX/w1uwXFRMAD1+5hHrvdgq18iD33wNw03mqqkJTuGpIMb0NNSnSO39tl3v+r5wUTJdhEMW1MEDYCe6dRFJQ==
   dependencies:
     eslint-rule-composer "0.3.0"
 
