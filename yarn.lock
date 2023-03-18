@@ -1315,14 +1315,14 @@
     "@babel/runtime-corejs3" "7.17.9"
     core-js "3.22.0"
 
-"@poool/react-access@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@poool/react-access/-/react-access-2.0.1.tgz#360062a1cbf0e59003fd40b7e8823aca53c67ee1"
-  integrity sha512-ID3HrzJ6Gzsf5T8c11WA5yvlfIK+FbdQejtfnVEGYuZy03VppOlVN3ci7wtR4x92ThRZlUQ+ooc0vDld6sdmtA==
+"@poool/react-access@2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@poool/react-access/-/react-access-2.0.2.tgz#ecb76e0f53cbc7ae0e24e5ca3b9b2c9af4053e1b"
+  integrity sha512-0HqNKJjh9VTBNwkfQ92wXqJ0ZBfdVze7FGvt2L7cH/J+YPT6AkkNeXHUurmWfj9vrkkzHZrwvIn3tiQ/kunEEg==
   dependencies:
-    "@babel/runtime-corejs3" "7.17.9"
+    "@babel/runtime-corejs3" "7.18.9"
     "@poool/junipero-utils" "2.0.0-rc.21"
-    core-js "3.22.2"
+    core-js "3.25.0"
     prop-types "15.8.1"
 
 "@types/body-parser@*":
@@ -2167,15 +2167,15 @@ core-js@3.22.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.0.tgz#b52007870c5e091517352e833b77f0b2d2b259f3"
   integrity sha512-8h9jBweRjMiY+ORO7bdWSeWfHhLPO7whobj7Z2Bl0IDo00C228EdGgH7FE4jGumbEjzcFfkfW8bXgdkEDhnwHQ==
 
-core-js@3.22.2:
-  version "3.22.2"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.2.tgz#3ea0a245b0895fa39d1faa15fe75d91ade504a01"
-  integrity sha512-Z5I2vzDnEIqO2YhELVMFcL1An2CIsFe9Q7byZhs8c/QxummxZlAHw33TUHbIte987LkisOgL0LwQ1P9D6VISnA==
-
 core-js@3.24.1:
   version "3.24.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.1.tgz#cf7724d41724154010a6576b7b57d94c5d66e64f"
   integrity sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==
+
+core-js@3.25.0:
+  version "3.25.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.25.0.tgz#be71d9e0dd648ffd70c44a7ec2319d039357eceb"
+  integrity sha512-CVU1xvJEfJGhyCpBrzzzU1kjCfgsGUxhEvwUV2e/cOedYWHdmluamx+knDnmhqALddMG16fZvIqvs9aijsHHaA==
 
 core-util-is@~1.0.0:
   version "1.0.3"
