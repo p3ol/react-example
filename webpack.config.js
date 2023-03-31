@@ -41,7 +41,6 @@ module.exports = {
     filename: 'bundle.[fullhash].js',
     publicPath: '/',
   },
-  devtool: 'inline-source-map',
   devServer: {
     port: 8888,
     host: 'localhost',
