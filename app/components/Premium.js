@@ -99,7 +99,7 @@ export default () => {
   return (
     <div className="page premium">
       <div className="container">
-        <Header paywallRef={accessRef} onLogin={onLogin} />
+        <Header onLogin={onLogin} />
         <h1>Premium post</h1>
         <p>This is a premium post (with a paywall), it
         contains exactly 10 paragraphs of lorem ipsum
@@ -112,7 +112,6 @@ export default () => {
             <Paywall
               ref={accessRef}
               contentRef={paywallRef}
-              beforeInit={init}
               events={{ onSubscribeClick, onLoginClick }}
               config={config}
             />
