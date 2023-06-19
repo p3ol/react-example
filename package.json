@@ -15,7 +15,7 @@
     "@poool/eslint-config": "2.0.2",
     "@poool/eslint-config-react": "2.0.2",
     "@poool/eslint-plugin": "2.0.2",
-    "babel-eslint": "10.1.0",
+    "@babel/eslint-parser": "7.11.0",
     "babel-loader": "8.2.5",
     "eslint": "8.21.0",
     "eslint-config-standard": "17.0.0",
