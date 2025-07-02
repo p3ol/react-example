@@ -8,10 +8,10 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@babel/core": "7.18.10",
-    "@babel/plugin-transform-runtime": "7.18.10",
-    "@babel/preset-env": "7.18.10",
-    "@babel/preset-react": "7.18.6",
+    "@babel/core": "7.28.0",
+    "@babel/plugin-transform-runtime": "7.28.0",
+    "@babel/preset-env": "7.28.0",
+    "@babel/preset-react": "7.27.1",
     "@poool/eslint-config": "2.0.2",
     "@poool/eslint-config-react": "2.0.2",
     "@poool/eslint-plugin": "2.0.2",
@@ -33,8 +33,8 @@
     "webpack-dev-server": "4.9.3"
   },
   "dependencies": {
-    "@babel/eslint-parser": "7.18.9",
-    "@babel/eslint-plugin": "7.18.10",
+    "@babel/eslint-parser": "7.28.0",
+    "@babel/eslint-plugin": "7.27.1",
     "@babel/runtime-corejs3": "7.18.9",
     "@poool/react-access": "2.0.2",
     "core-js": "3.24.1",
