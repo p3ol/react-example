@@ -1,10 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks';
 
-export default ({ onLogin = () => {} }) => {
-  const { login, connecting, connected } = useAuth();
+const Header = ({ onLogin = () => {} }) => {
+  const {
+    login,
+    setConsentGiven,
+    consentGiven,
+    connecting,
+    connected,
+  } = useAuth();
 
   const login_ = () => {
     login();
@@ -33,6 +38,17 @@ export default ({ onLogin = () => {} }) => {
         </div>
 
         <span className="navbar-text">
+          <span className="mr-4">
+            <strong>Consent:</strong>
+            { consentGiven ? 'Yes' : 'No' }
+          </span>
+          <a
+            href="#"
+            onClick={setConsentGiven.bind(null, true)}
+            className="mr-4"
+          >
+            Give consent
+          </a>
           { connecting ? (
             <span>Connecting...</span>
           ) : connected ? (
@@ -45,3 +61,5 @@ export default ({ onLogin = () => {} }) => {
     </header>
   );
 };
+
+export default Header;

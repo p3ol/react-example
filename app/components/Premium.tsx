@@ -1,64 +1,35 @@
-import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
-  useAudit,
-  useAccess,
   Paywall,
   RestrictedContent,
   Pixel,
+  AccessEvents,
+  AccessSubscribeClickEvent,
+  AccessLoginClickEvent,
+  RestrictedContentRef,
 } from '@poool/react-access';
 
 import { useAuth } from '../hooks';
 import Header from './fragments/Header';
+import { useRef } from 'react';
 
-export default () => {
-  const accessRef = useRef();
-  const paywallRef = useRef();
+const Premium = () => {
+  const contentRef = useRef<RestrictedContentRef>(null);
   const navigate = useNavigate();
 
-  const { lib: audit, config: auditConfig } = useAudit();
-  const { config: baseConfig } = useAccess();
-  const { login, premium, connected } = useAuth();
-  const [config, setConfig] = useState({});
+  const { login, premium } = useAuth();
 
-  useEffect(() => {
-    accessRef.current?.recreate();
-  }, [config]);
-
-  const init = () => {
-    setConfig({
-      ...baseConfig,
-      ...config,
-      user_is_premium: premium || false,
-    });
-
-    if (connected && premium) {
-      accessRef.current?.destroy();
-    }
-  };
-
-  const onLogin = async () => {
-    init();
-    audit?.config({
-      ...auditConfig,
-      user_is_premium: premium || false,
-    });
-    audit?.sendEvent('page-view', 'premium');
-  };
-
-  const onSubscribeClick = e => {
+  const onSubscribeClick = (e: AccessSubscribeClickEvent) => {
     e.originalEvent?.preventDefault();
     navigate('/subscribe');
   };
 
-  const onLoginClick = async e => {
+  const onLoginClick = async (e: AccessLoginClickEvent) => {
     e.originalEvent?.preventDefault();
     await login();
-    onLogin();
   };
 
   const articleBody = (
-
     <div className="articleBody">
       { /* eslint-disable max-len */ }
       <p>
@@ -99,26 +70,30 @@ export default () => {
   return (
     <div className="page premium">
       <div className="container">
-        <Header onLogin={onLogin} />
+        <Header />
         <h1>Premium post</h1>
         <p>This is a premium post (with a paywall), it
         contains exactly 10 paragraphs of lorem ipsum
         </p>
         { !premium ? (
           <>
-            <RestrictedContent ref={paywallRef}>
-              {articleBody}
+            <RestrictedContent ref={contentRef}>
+              { articleBody }
             </RestrictedContent>
             <Paywall
-              ref={accessRef}
-              contentRef={paywallRef}
+              contentRef={contentRef}
               events={{ onSubscribeClick, onLoginClick }}
-              config={config}
             />
           </>
         ) : articleBody }
       </div>
-      <Pixel type="page-view" data={{ type: 'premium' }} />
+      <Pixel
+        config={{ user_is_premium: premium || false }}
+        type="page-view"
+        data={{ type: 'premium' }}
+      />
     </div>
   );
 };
+
+export default Premium;

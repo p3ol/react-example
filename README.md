@@ -5,5 +5,3 @@
 ### Run
 
 `yarn install && yarn start`
-
-Opens `http://localhost:8888`
