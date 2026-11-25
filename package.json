@@ -9,8 +9,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@poool/eslint-config": "5.0.2",
-    "@poool/eslint-config-react": "5.0.2",
+    "@poool/eslint-config": "5.0.10",
+    "@poool/eslint-config-react": "5.0.10",
     "@swc/core": "1.13.3",
     "@types/poool-access": "5.18.1",
     "@types/react": "19.1.9",
